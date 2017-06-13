@@ -4,8 +4,25 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="STBank.Views.MainPage"
-             Title="MainPage">
-  <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-    <Label Text="{Binding Title}" />
-  </StackLayout>
+             Title="Inicio">
+  <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+      
+      <!-- Creditos registrados hoy -->
+      <Label Text="0" FontSize="50" HorizontalOptions="Center" VerticalOptions="End"/>
+      <Label Text="Creditos registrados hoy" FontSize="20" HorizontalOptions="Center" Grid.Row="1"/>
+
+      <!-- Creditos restatntes cuota -->
+      <Label Text="3" FontSize="50" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End"/>
+      <Label Text="Creditos restantes del mes" FontSize="20" HorizontalOptions="Center" Grid.Row="3"/>
+
+      <Button Grid.Row="4"  Text="Iniciar evaluacion crediticia" VerticalOptions="End" Margin="20"
+              BackgroundColor="#1862E4" TextColor="White"></Button>
+  </Grid>
 </ContentPage>
