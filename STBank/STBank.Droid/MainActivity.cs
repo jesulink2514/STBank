@@ -1,5 +1,5 @@
 ﻿using System;
-
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
+using Xamarin.Forms;
 
 namespace STBank.Droid
 {
@@ -22,6 +23,7 @@ namespace STBank.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            UserDialogs.Init(() => (Activity) Forms.Context);
             LoadApplication(new App(new AndroidInitializer()));
         }
     }
