@@ -5,11 +5,7 @@ using Xamarin.Forms;
 namespace STBank
 {
     public partial class App : PrismApplication
-    {
-        public App():base(null)
-        {            
-            InitializeComponent();
-        }
+    {        
         public App(IPlatformInitializer initializer = null) : base(initializer) { }
 
         protected override void OnInitialized()
