@@ -3,21 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             Title="Evaluar"
              x:Class="STBank.Views.CheckCreditPage">
     <StackLayout Margin="10" Spacing="15">
         <Label Text="Evaluar" FontSize="24" HorizontalOptions="Center"></Label>
-        <Entry Placeholder="DNI"></Entry>
-        <Entry Placeholder="Monto"></Entry>
+        <Entry Placeholder="DNI"
+               Text="{Binding DNI}"></Entry>
+        <Entry Placeholder="Monto" Text="{Binding Monto}"></Entry>
         <Label FontSize="20" Text="Tipo de Credito"
-               HorizontalOptions="Center"></Label>
-        <Picker  />
+               HorizontalOptions="Center"
+               ></Label>
+        <Picker ItemsSource="{Binding TiposCredito}"
+                SelectedItem="{Binding TipoCredito}"/>
+        
         <Label FontSize="20" Text="Numero de Cuotas"
                HorizontalOptions="Center"></Label>
         <Picker  />
-        <Button Text="Evaluar"></Button>
+        <Button Text="Evaluar" Command="{Binding EvaluarCommand}"></Button>
         <Label FontSize="15" FontAttributes="Bold"
                Text="Excelente! Esta pre-aprobado"
                HorizontalOptions="Center"></Label>
-        <Button Text="Registrar"></Button>
+        <Button Text="Registrar" Command="{Binding RegistrarCommand}"
+                 ></Button>
     </StackLayout>
 </ContentPage>
