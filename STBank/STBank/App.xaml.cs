@@ -1,4 +1,6 @@
-﻿using Prism.Unity;
+﻿using Microsoft.Practices.Unity;
+using Prism.Unity;
+using STBank.Models;
 using STBank.Views;
 using Xamarin.Forms;
 
@@ -21,6 +23,8 @@ namespace STBank
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<CheckCreditPage>();
             Container.RegisterTypeForNavigation<CreditRegisteredPage>();
+
+            Container.RegisterType<ICreditService,CreditService>();
         }
     }
 }

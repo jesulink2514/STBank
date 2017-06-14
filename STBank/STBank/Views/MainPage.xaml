@@ -5,7 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="STBank.Views.MainPage"
              Title="Inicio">
-  <Grid>
+    <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
@@ -13,16 +13,17 @@
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-      
-      <!-- Creditos registrados hoy -->
-      <Label Text="0" FontSize="50" HorizontalOptions="Center" VerticalOptions="End"/>
-      <Label Text="Creditos registrados hoy" FontSize="20" HorizontalOptions="Center" Grid.Row="1"/>
 
-      <!-- Creditos restatntes cuota -->
-      <Label Text="3" FontSize="50" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End"/>
-      <Label Text="Creditos restantes del mes" FontSize="20" HorizontalOptions="Center" Grid.Row="3"/>
+        <!-- Creditos registrados hoy -->
+        <Label Text="{Binding CreditosRegistradosHoy}" FontSize="50" HorizontalOptions="Center" VerticalOptions="End"/>
+        <Label Text="Creditos registrados hoy" FontSize="20" HorizontalOptions="Center" Grid.Row="1"/>
 
-      <Button Grid.Row="4"  Text="Iniciar evaluacion crediticia" VerticalOptions="End" Margin="20"
-              BackgroundColor="#1862E4" TextColor="White"></Button>
-  </Grid>
+        <!-- Creditos restatntes cuota -->
+        <Label Text="{Binding CreditosRestantesCuota}" FontSize="50" HorizontalOptions="Center" Grid.Row="2" VerticalOptions="End"/>
+        <Label Text="Creditos restantes del mes" FontSize="20" HorizontalOptions="Center" Grid.Row="3"/>
+
+        <Button Grid.Row="4" Text="Iniciar evaluacion crediticia" VerticalOptions="End" Margin="20"
+              BackgroundColor="#1862E4" TextColor="White"
+              Command="{Binding EvaluarCommand}"></Button>
+    </Grid>
 </ContentPage>

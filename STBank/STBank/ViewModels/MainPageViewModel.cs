@@ -4,22 +4,30 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using STBank.Models;
 
 namespace STBank.ViewModels
 {
     public class MainPageViewModel : BindableBase, INavigationAware
     {
-        private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
+        
+        public int CreditosRegistradosHoy { get; set; }
+        public int CreditosRestantesCuota { get; set; }
+        public ICommand EvaluarCommand { get; private set; }
 
-        public MainPageViewModel()
+        public MainPageViewModel(ICreditService creditService,
+            INavigationService navigationService)
         {
-
+            _creditService = creditService;
+            _navigationService = navigationService;
+            EvaluarCommand = new DelegateCommand(
+                async()=> await _navigationService.NavigateAsync("CheckCreditPage"));
         }
+        private readonly ICreditService _creditService;
+        private readonly INavigationService _navigationService;
+
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -31,10 +39,13 @@ namespace STBank.ViewModels
 
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("title"))
-                Title = (string)parameters["title"] + " and Prism";
+            using (Acr.UserDialogs.UserDialogs.Instance.Loading("Cargando..."))
+            {
+                CreditosRegistradosHoy = (await _creditService.GetCreditosHoy()).Count;
+                CreditosRestantesCuota = await _creditService.GetCuotaRestante();
+            }
         }
     }
 }
